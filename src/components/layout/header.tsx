@@ -16,7 +16,6 @@ const navLinks = [
   { href: '/products', label: 'All Products' },
   { href: '/collections/new-arrivals', label: 'New Arrivals' },
   { href: '/collections/summer-collection', label: 'Summer Collection' },
-  { href: '/orders', label: 'My Orders'}
 ];
 
 export function Header() {
@@ -69,6 +68,9 @@ export function Header() {
                     {link.label}
                   </Link>
                 ))}
+                  <Link href="/account" className="text-lg transition-colors hover:text-primary">
+                    My Account
+                  </Link>
               </nav>
             </SheetContent>
           </Sheet>
@@ -86,10 +88,12 @@ export function Header() {
               </div>
             </form>
           </div>
-          <Button variant="ghost" size="icon">
-            <User className="h-6 w-6" />
-            <span className="sr-only">Account</span>
-          </Button>
+          <Link href="/account">
+            <Button variant="ghost" size="icon">
+              <User className="h-6 w-6" />
+              <span className="sr-only">Account</span>
+            </Button>
+          </Link>
           <Link href="/cart">
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingCart className="h-6 w-6" />

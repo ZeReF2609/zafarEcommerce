@@ -18,10 +18,10 @@ export default function OrderDetailsPage({ params }: { params: { id: string } })
   const subtotal = order.total - shippingCost;
 
   return (
-    <div className="container py-8 md:py-12">
+    <div>
         <div className='mb-6'>
             <Button asChild variant="outline">
-                <Link href="/orders"> &larr; Back to Orders</Link>
+                <Link href="/account/orders"> &larr; Back to Orders</Link>
             </Button>
         </div>
       <Card>

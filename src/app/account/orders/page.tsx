@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils';
 
 export default function OrdersPage() {
     return (
-        <div className="container py-8 md:py-12">
-            <h1 className="text-3xl font-bold tracking-tight md:text-4xl font-headline mb-8">My Orders</h1>
+        <div>
+            <h2 className="text-2xl font-bold mb-4">My Orders</h2>
             <div className="space-y-6">
                 {orders.map(order => (
                     <Card key={order.id}>
@@ -30,7 +30,7 @@ export default function OrdersPage() {
                         </CardContent>
                         <CardFooter>
                             <Button asChild variant="outline">
-                                <Link href={`/orders/${order.id}`}>View Details</Link>
+                                <Link href={`/account/orders/${order.id}`}>View Details</Link>
                             </Button>
                         </CardFooter>
                     </Card>
