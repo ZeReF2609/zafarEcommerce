@@ -1,15 +1,23 @@
+
+"use client";
+
 import Link from 'next/link';
+import React from 'react';
 import { products } from '@/lib/placeholder-data';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ProductCard } from '@/components/product-card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
   const newArrivals = products.filter(p => p.collection === 'new-arrivals').slice(0, 4);
   const summerCollection = products.filter(p => p.collection === 'summer-collection').slice(0, 4);
   const featuredProducts = [...products].sort((a, b) => b.rating - a.rating).slice(0, 8);
-
+  
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: true })
+  );
 
   return (
     <div>
@@ -37,11 +45,14 @@ export default function Home() {
               </p>
           </div>
           <Carousel
+            plugins={[plugin.current]}
             opts={{
               align: "start",
               loop: true,
             }}
             className="w-full"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
           >
             <CarouselContent>
               {featuredProducts.map((product) => (
