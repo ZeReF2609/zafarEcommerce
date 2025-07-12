@@ -37,7 +37,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     <div className="container py-8 md:py-12">
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-12">
         <div className="w-full">
-            <Carousel>
+            <Carousel className="w-full max-w-full">
                 <CarouselContent>
                     {product.images.map((src, index) => (
                         <CarouselItem key={index}>
@@ -56,8 +56,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="left-4" />
-                <CarouselNext className="right-4" />
+                <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
+                <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
             </Carousel>
         </div>
 
