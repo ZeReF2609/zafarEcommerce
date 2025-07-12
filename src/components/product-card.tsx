@@ -1,3 +1,4 @@
+
 "use client"
 
 import Image from 'next/image';
@@ -42,22 +43,22 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardHeader>
       <CardContent className="flex-1 p-4">
         <Link href={`/products/${product.id}`}>
-          <CardTitle className="mb-2 text-lg font-semibold leading-tight hover:text-primary">
+          <CardTitle className="mb-1 text-base font-semibold leading-tight hover:text-primary">
             {product.name}
           </CardTitle>
         </Link>
         <div className="flex items-center">
-            <StarRating rating={product.rating} />
-            <span className="ml-2 text-sm text-muted-foreground">({product.reviewsCount})</span>
+            <StarRating rating={product.rating} size={14} />
+            <span className="ml-2 text-xs text-muted-foreground">({product.reviewsCount})</span>
         </div>
       </CardContent>
       <CardFooter className="flex items-center justify-between p-4 pt-0">
-        <div className="flex items-baseline gap-2">
-            {product.originalPrice && <span className="text-sm text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>}
-            <span className="text-xl font-bold text-foreground">${product.price.toFixed(2)}</span>
+        <div className="flex flex-col items-start">
+            {product.originalPrice && <span className="text-xs text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>}
+            <span className="text-lg font-bold text-foreground">${product.price.toFixed(2)}</span>
         </div>
-        <Button size="icon" variant="outline" onClick={handleAddToCart} aria-label="Add to cart">
-          <ShoppingCart className="h-5 w-5" />
+        <Button size="icon" variant="outline" onClick={handleAddToCart} aria-label="Add to cart" className="h-9 w-9">
+          <ShoppingCart className="h-4 w-4" />
         </Button>
       </CardFooter>
     </Card>

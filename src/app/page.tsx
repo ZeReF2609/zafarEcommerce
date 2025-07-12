@@ -11,8 +11,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
-  const newArrivals = products.filter(p => p.collection === 'new-arrivals').slice(0, 4);
-  const summerCollection = products.filter(p => p.collection === 'summer-collection').slice(0, 4);
+  const newArrivals = products.filter(p => p.collection === 'new-arrivals').slice(0, 5);
+  const summerCollection = products.filter(p => p.collection === 'summer-collection').slice(0, 5);
   const featuredProducts = [...products].sort((a, b) => b.rating - a.rating).slice(0, 8);
   
   const plugin = React.useRef(
@@ -56,7 +56,7 @@ export default function Home() {
           >
             <CarouselContent>
               {featuredProducts.map((product) => (
-                <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                <CarouselItem key={product.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5">
                    <div className="p-1">
                       <ProductCard product={product} />
                    </div>
@@ -85,14 +85,14 @@ export default function Home() {
             </div>
             
             <TabsContent value="new-arrivals">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {newArrivals.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
                 </div>
             </TabsContent>
             <TabsContent value="summer-collection">
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {summerCollection.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}

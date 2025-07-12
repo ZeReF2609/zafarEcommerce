@@ -31,7 +31,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
     addItem(product, quantity);
   };
 
-  const relatedProducts = products.filter(p => p.collection === product.collection && p.id !== product.id).slice(0, 4);
+  const relatedProducts = products.filter(p => p.collection === product.collection && p.id !== product.id).slice(0, 5);
 
   return (
     <div className="container py-8 md:py-12">
@@ -134,7 +134,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
        {relatedProducts.length > 0 && (
         <section className="mt-16">
             <h2 className="text-3xl font-bold tracking-tight text-center font-headline mb-8">You Might Also Like</h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {relatedProducts.map((p) => (
                     <ProductCard key={p.id} product={p} />
                 ))}
