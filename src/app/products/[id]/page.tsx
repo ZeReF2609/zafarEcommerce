@@ -1,8 +1,9 @@
+
 "use client"
 
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import { getProductById, reviews } from '@/lib/placeholder-data';
+import { getProductById, reviews, products } from '@/lib/placeholder-data';
 import { StarRating } from '@/components/star-rating';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -15,6 +16,7 @@ import { useCart } from '@/hooks/use-cart';
 import { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Minus, Plus } from 'lucide-react';
+import { ProductCard } from '@/components/product-card';
 
 export default function ProductPage({ params }: { params: { id: string } }) {
   const [quantity, setQuantity] = useState(1);
@@ -28,6 +30,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
   const handleAddToCart = () => {
     addItem(product, quantity);
   };
+
+  const relatedProducts = products.filter(p => p.collection === product.collection && p.id !== product.id).slice(0, 4);
 
   return (
     <div className="container py-8 md:py-12">
@@ -126,6 +130,18 @@ export default function ProductPage({ params }: { params: { id: string } }) {
           </Accordion>
         </div>
       </div>
+
+       {relatedProducts.length > 0 && (
+        <section className="mt-16">
+            <h2 className="text-3xl font-bold tracking-tight text-center font-headline mb-8">You Might Also Like</h2>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {relatedProducts.map((p) => (
+                    <ProductCard key={p.id} product={p} />
+                ))}
+            </div>
+        </section>
+      )}
     </div>
   );
 }
+
