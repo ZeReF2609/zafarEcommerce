@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
 import { Logo } from '@/components/icons';
 import { useCart } from '@/hooks/use-cart';
+import { CartSheet } from '@/components/cart-sheet';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -20,7 +21,7 @@ const navLinks = [
 
 export function Header() {
   const [isMounted, setIsMounted] = useState(false);
-  const { totalItems } = useCart();
+  const { totalItems, isCartOpen, toggleCart } = useCart();
   const itemCount = totalItems();
 
   useEffect(() => {
@@ -94,15 +95,20 @@ export function Header() {
               <span className="sr-only">Account</span>
             </Button>
           </Link>
-          <Link href="/cart">
-            <Button variant="ghost" size="icon" className="relative">
-              <ShoppingCart className="h-6 w-6" />
-              {isMounted && itemCount > 0 && (
-                 <Badge variant="destructive" className="absolute -right-2 -top-2 h-6 w-6 justify-center rounded-full p-0">{itemCount}</Badge>
-              )}
-              <span className="sr-only">Shopping Cart</span>
-            </Button>
-          </Link>
+          <Sheet open={isCartOpen} onOpenChange={toggleCart}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="relative">
+                <ShoppingCart className="h-6 w-6" />
+                {isMounted && itemCount > 0 && (
+                  <Badge variant="destructive" className="absolute -right-2 -top-2 h-6 w-6 justify-center rounded-full p-0">{itemCount}</Badge>
+                )}
+                <span className="sr-only">Shopping Cart</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">
+              <CartSheet />
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
