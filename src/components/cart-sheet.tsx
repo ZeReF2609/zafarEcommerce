@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -82,7 +83,9 @@ export function CartSheet() {
                                 <span>Total</span>
                                 <span>${(cartTotal + shippingCost).toFixed(2)}</span>
                             </div>
-                             <Button className="w-full" size="lg">Proceed to Checkout</Button>
+                             <Button asChild className="w-full" size="lg" onClick={toggleCart}>
+                                <Link href="/checkout">Proceed to Checkout</Link>
+                             </Button>
                         </div>
                     </SheetFooter>
                 </div>

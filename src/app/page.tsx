@@ -3,10 +3,13 @@ import { products } from '@/lib/placeholder-data';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ProductCard } from '@/components/product-card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 export default function Home() {
-  const newArrivals = products.filter(p => p.collection === 'new-arrivals');
-  const summerCollection = products.filter(p => p.collection === 'summer-collection');
+  const newArrivals = products.filter(p => p.collection === 'new-arrivals').slice(0, 4);
+  const summerCollection = products.filter(p => p.collection === 'summer-collection').slice(0, 4);
+  const featuredProducts = [...products].sort((a, b) => b.rating - a.rating).slice(0, 8);
+
 
   return (
     <div>
@@ -26,6 +29,37 @@ export default function Home() {
       </section>
 
       <section className="py-12 sm:py-16 lg:py-20">
+        <div className="container">
+          <div className="mb-12 text-center">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Featured Products</h2>
+              <p className="mt-2 text-lg text-muted-foreground">
+                  Hand-picked by us, just for you.
+              </p>
+          </div>
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {featuredProducts.map((product) => (
+                <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+                   <div className="p-1">
+                      <ProductCard product={product} />
+                   </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
+          </Carousel>
+        </div>
+      </section>
+
+
+      <section className="py-12 sm:py-16 lg:py-20 bg-background">
         <div className="container">
             <Tabs defaultValue="new-arrivals" className="w-full">
             <div className="mb-8 flex flex-col items-center justify-center text-center">
