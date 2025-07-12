@@ -41,26 +41,28 @@ export function ProductCard({ product }: ProductCardProps) {
           </Badge>
         )}
       </CardHeader>
-      <CardContent className="flex-1 p-4">
-        <Link href={`/products/${product.id}`}>
-          <CardTitle className="mb-1 text-base font-semibold leading-tight hover:text-primary">
-            {product.name}
-          </CardTitle>
-        </Link>
-        <div className="flex items-center">
-            <StarRating rating={product.rating} size={14} />
-            <span className="ml-2 text-xs text-muted-foreground">({product.reviewsCount})</span>
+      <div className="flex flex-1 flex-col p-4">
+        <div className="flex-1">
+          <Link href={`/products/${product.id}`}>
+            <CardTitle className="mb-1 text-base font-semibold leading-tight hover:text-primary">
+              {product.name}
+            </CardTitle>
+          </Link>
+          <div className="flex items-center">
+              <StarRating rating={product.rating} size={14} />
+              <span className="ml-2 text-xs text-muted-foreground">({product.reviewsCount})</span>
+          </div>
         </div>
-      </CardContent>
-      <CardFooter className="flex items-center justify-between p-4 pt-0">
-        <div className="flex flex-col items-start">
-            {product.originalPrice && <span className="text-xs text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>}
-            <span className="text-lg font-bold text-foreground">${product.price.toFixed(2)}</span>
-        </div>
-        <Button size="icon" variant="outline" onClick={handleAddToCart} aria-label="Add to cart" className="h-9 w-9">
-          <ShoppingCart className="h-4 w-4" />
-        </Button>
-      </CardFooter>
+        <CardFooter className="flex items-center justify-between p-0 pt-4">
+            <div className="flex flex-col items-start">
+                {product.originalPrice && <span className="text-xs text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>}
+                <span className="text-lg font-bold text-foreground">${product.price.toFixed(2)}</span>
+            </div>
+            <Button size="icon" variant="outline" onClick={handleAddToCart} aria-label="Add to cart" className="h-9 w-9">
+              <ShoppingCart className="h-4 w-4" />
+            </Button>
+        </CardFooter>
+      </div>
     </Card>
   );
 }
