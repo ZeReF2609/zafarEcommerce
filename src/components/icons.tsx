@@ -6,6 +6,6 @@ export const Logo = ({ className }: { className?: string }) => (
     <div className='bg-primary p-2 rounded-lg'>
       <Gem className="h-5 w-5 text-primary-foreground" />
     </div>
-    <span className={cn("font-headline font-extrabold tracking-tight", className)}>ShopSphere</span>
+    <span className={cn("font-headline font-extrabold tracking-tight", className)}>Pionier</span>
   </div>
 );

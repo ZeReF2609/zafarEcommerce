@@ -13,8 +13,8 @@ const fontSans = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'ShopSphere',
-  description: 'El mejor lugar para comprar cosas geniales.',
+  title: 'Pionier',
+  description: 'La tienda oficial de Pionier. Descubre lo último en moda.',
 };
 
 export default function RootLayout({
