@@ -85,7 +85,7 @@ export default function Home() {
 
   return (
     <div className="animate-fade-in">
-      <section className="relative h-[80vh] w-full">
+      <section className="relative h-[60vh] md:h-[80vh] w-full -mt-16">
          <Carousel
             plugins={[heroPlugin.current]}
             className="w-full h-full"
@@ -96,18 +96,28 @@ export default function Home() {
             <CarouselContent className="h-full">
               {heroSlides.map((slide, index) => (
                 <CarouselItem key={index} className="h-full">
-                    <div className="relative h-full w-full bg-cover bg-center" style={{ backgroundImage: `url('${slide.image}')` }} data-ai-hint={slide.hint}>
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
-                        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
-                            <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl font-headline">
-                                {slide.title}
-                            </h1>
-                            <p className="mt-4 max-w-2xl text-lg text-gray-200">
-                                {slide.description}
-                            </p>
-                            <Button asChild size="lg" className="mt-8">
-                                <Link href={slide.href}>{slide.buttonText}</Link>
-                            </Button>
+                    <div className="relative h-full w-full">
+                        <Image
+                            src={slide.image}
+                            alt={slide.title}
+                            fill
+                            className="object-cover"
+                            data-ai-hint={slide.hint}
+                            priority={index === 0}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="container mx-auto px-4 text-center text-white">
+                                <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl font-headline">
+                                    {slide.title}
+                                </h1>
+                                <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-200">
+                                    {slide.description}
+                                </p>
+                                <Button asChild size="lg" className="mt-8">
+                                    <Link href={slide.href}>{slide.buttonText}</Link>
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </CarouselItem>
@@ -121,7 +131,7 @@ export default function Home() {
       {dealOfTheDay && (
         <section className="py-16 sm:py-20 lg:py-24">
             <div className="container">
-                <Card className="overflow-hidden">
+                <Card className="overflow-hidden border-none shadow-xl">
                     <div className="grid md:grid-cols-2">
                          <div className="relative aspect-video md:aspect-auto">
                             <Image 
@@ -132,7 +142,7 @@ export default function Home() {
                                 data-ai-hint="fashion product lifestyle"
                             />
                         </div>
-                        <div className="flex flex-col justify-center p-8 lg:p-12">
+                        <div className="flex flex-col justify-center p-8 lg:p-12 bg-card">
                             <h3 className="text-sm uppercase tracking-widest text-primary font-semibold">Oferta del Día</h3>
                             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl font-headline">{dealOfTheDay.name}</h2>
                             <p className="mt-4 text-muted-foreground">{dealOfTheDay.description}</p>
@@ -189,7 +199,7 @@ export default function Home() {
       </section>
 
 
-      <section className="py-16 sm:py-20 lg:py-24 bg-secondary/50">
+      <section className="py-16 sm:py-20 lg:py-24 bg-muted">
         <div className="container">
             <Tabs defaultValue="new-arrivals" className="w-full">
             <div className="mb-12 flex flex-col items-center justify-center text-center">
@@ -197,7 +207,7 @@ export default function Home() {
                 <p className="mt-2 text-lg text-muted-foreground">
                     Descubre lo nuevo y lo que está en tendencia.
                 </p>
-                <TabsList className="mt-6 grid w-full max-w-md grid-cols-2">
+                <TabsList className="mt-6 grid w-full max-w-md grid-cols-2 bg-background">
                     <TabsTrigger value="new-arrivals">Novedades</TabsTrigger>
                     <TabsTrigger value="summer-collection">Colección de Verano</TabsTrigger>
                 </TabsList>
