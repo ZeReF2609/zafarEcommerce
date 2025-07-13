@@ -85,7 +85,7 @@ export default function Home() {
 
   return (
     <div className="animate-fade-in">
-      <section className="relative h-[60vh] md:h-[80vh] w-full -mt-16">
+      <section className="relative h-[60vh] md:h-[80vh] w-full">
          <Carousel
             plugins={[heroPlugin.current]}
             className="w-full h-full"
@@ -123,8 +123,8 @@ export default function Home() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex text-white hover:text-white bg-white/10 hover:bg-white/20" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex text-white hover:text-white bg-white/10 hover:bg-white/20" />
         </Carousel>
       </section>
 
