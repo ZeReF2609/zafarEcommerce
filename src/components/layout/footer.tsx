@@ -12,7 +12,7 @@ export function Footer() {
           <div className='lg:col-span-2'>
             <Logo />
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-              Your one-stop shop for everything cool. High-quality products and unbeatable prices.
+              Tu tienda única para todo lo genial. Productos de alta calidad y precios inmejorables.
             </p>
             <div className="mt-4 flex space-x-4">
               <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
@@ -27,38 +27,38 @@ export function Footer() {
             </div>
           </div>
           <div>
-            <h3 className="font-semibold uppercase tracking-wider">Shop</h3>
+            <h3 className="font-semibold uppercase tracking-wider">Tienda</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link href="/collections/new-arrivals" className="text-sm text-muted-foreground hover:text-primary transition-colors">New Arrivals</Link></li>
-              <li><Link href="/collections/summer-collection" className="text-sm text-muted-foreground hover:text-primary transition-colors">Summer Collection</Link></li>
-              <li><Link href="/products" className="text-sm text-muted-foreground hover:text-primary transition-colors">All Products</Link></li>
+              <li><Link href="/collections/new-arrivals" className="text-sm text-muted-foreground hover:text-primary transition-colors">Novedades</Link></li>
+              <li><Link href="/collections/summer-collection" className="text-sm text-muted-foreground hover:text-primary transition-colors">Colección de Verano</Link></li>
+              <li><Link href="/products" className="text-sm text-muted-foreground hover:text-primary transition-colors">Todos los Productos</Link></li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold uppercase tracking-wider">About</h3>
+            <h3 className="font-semibold uppercase tracking-wider">Nosotros</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Our Story</Link></li>
-              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Careers</Link></li>
-              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Press</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Nuestra Historia</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Carreras</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Prensa</Link></li>
             </ul>
           </div>
           <div>
-            <h3 className="font-semibold uppercase tracking-wider">Support</h3>
+            <h3 className="font-semibold uppercase tracking-wider">Soporte</h3>
             <ul className="mt-4 space-y-2">
-              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
-              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contact Us</Link></li>
-              <li><Link href="/account/orders" className="text-sm text-muted-foreground hover:text-primary transition-colors">Order Status</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Preguntas Frecuentes</Link></li>
+              <li><Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Contáctanos</Link></li>
+              <li><Link href="/account/orders" className="text-sm text-muted-foreground hover:text-primary transition-colors">Estado del Pedido</Link></li>
             </ul>
           </div>
         </div>
         <div className="mt-12 border-t border-muted pt-8 flex flex-col md:flex-row items-center justify-between">
            <p className="text-sm text-muted-foreground text-center md:text-left">
-              &copy; {new Date().getFullYear()} ShopSphere. All Rights Reserved.
+              &copy; {new Date().getFullYear()} ShopSphere. Todos los Derechos Reservados.
             </p>
             <div className="mt-4 md:mt-0">
                 <form className='flex w-full max-w-sm items-center space-x-2'>
-                    <Input type='email' placeholder='Enter your email' className='bg-background'/>
-                    <Button type='submit'>Subscribe</Button>
+                    <Input type='email' placeholder='Ingresa tu correo' className='bg-background'/>
+                    <Button type='submit'>Suscríbete</Button>
                 </form>
             </div>
         </div>

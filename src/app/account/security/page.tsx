@@ -10,11 +10,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast"
 
 const securityFormSchema = z.object({
-    currentPassword: z.string().min(1, "Current password is required."),
-    newPassword: z.string().min(8, "New password must be at least 8 characters."),
+    currentPassword: z.string().min(1, "La contraseña actual es requerida."),
+    newPassword: z.string().min(8, "La nueva contraseña debe tener al menos 8 caracteres."),
     confirmPassword: z.string(),
 }).refine((data) => data.newPassword === data.confirmPassword, {
-    message: "Passwords don't match",
+    message: "Las contraseñas no coinciden",
     path: ["confirmPassword"],
 });
 
@@ -35,16 +35,16 @@ export default function SecurityPage() {
     function onSubmit(data: SecurityFormValues) {
         console.log(data)
         toast({
-            title: "Password Updated",
-            description: "Your password has been changed successfully.",
+            title: "Contraseña Actualizada",
+            description: "Tu contraseña ha sido cambiada exitosamente.",
         })
         form.reset()
     }
 
     return (
         <div>
-            <h2 className="text-2xl font-bold mb-4">Security Settings</h2>
-            <p className="text-muted-foreground mb-6">Manage your password.</p>
+            <h2 className="text-2xl font-bold mb-4">Ajustes de Seguridad</h2>
+            <p className="text-muted-foreground mb-6">Administra tu contraseña.</p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-lg">
                     <FormField
@@ -52,7 +52,7 @@ export default function SecurityPage() {
                         name="currentPassword"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Current Password</FormLabel>
+                                <FormLabel>Contraseña Actual</FormLabel>
                                 <FormControl>
                                     <Input type="password" {...field} />
                                 </FormControl>
@@ -65,7 +65,7 @@ export default function SecurityPage() {
                         name="newPassword"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>New Password</FormLabel>
+                                <FormLabel>Nueva Contraseña</FormLabel>
                                 <FormControl>
                                     <Input type="password" {...field} />
                                 </FormControl>
@@ -78,7 +78,7 @@ export default function SecurityPage() {
                         name="confirmPassword"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Confirm New Password</FormLabel>
+                                <FormLabel>Confirmar Nueva Contraseña</FormLabel>
                                 <FormControl>
                                     <Input type="password" {...field} />
                                 </FormControl>
@@ -87,7 +87,7 @@ export default function SecurityPage() {
                         )}
                     />
                     <div className="mt-6 flex justify-end">
-                        <Button type="submit">Update Password</Button>
+                        <Button type="submit">Actualizar Contraseña</Button>
                     </div>
                 </form>
             </Form>

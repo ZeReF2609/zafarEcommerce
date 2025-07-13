@@ -26,13 +26,13 @@ export default function CollectionPage({ params }: { params: { slug: string } })
     <div className="container py-8 md:py-12">
       <div className="mb-8">
         <Button asChild variant="outline">
-          <Link href="/products"> &larr; Back to All Products</Link>
+          <Link href="/products"> &larr; Volver a Todos los Productos</Link>
         </Button>
       </div>
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold tracking-tight font-headline">{collectionName}</h1>
         <p className="mt-2 text-lg text-muted-foreground">
-          Discover the latest trends in our {collectionName}.
+          Descubre las últimas tendencias en nuestra {collectionName}.
         </p>
       </div>
 

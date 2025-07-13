@@ -45,7 +45,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                                 <CardContent className="p-0">
                                 <Image
                                     src={src}
-                                    alt={`${product.name} image ${index + 1}`}
+                                    alt={`${product.name} imagen ${index + 1}`}
                                     width={600}
                                     height={600}
                                     className="aspect-square w-full object-cover"
@@ -62,11 +62,11 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         </div>
 
         <div>
-          {product.originalPrice && <Badge>SALE</Badge>}
+          {product.originalPrice && <Badge>OFERTA</Badge>}
           <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl font-headline">{product.name}</h1>
           <div className="mt-3 flex items-center">
             <StarRating rating={product.rating} />
-            <span className="ml-3 text-sm text-muted-foreground">{product.reviewsCount} reviews</span>
+            <span className="ml-3 text-sm text-muted-foreground">{product.reviewsCount} reseñas</span>
           </div>
           <div className="mt-4 flex items-baseline gap-2">
             {product.originalPrice && <span className="text-lg text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>}
@@ -86,16 +86,16 @@ export default function ProductPage({ params }: { params: { id: string } }) {
                     <Plus className="h-4 w-4"/>
                 </Button>
               </div>
-            <Button size="lg" className="flex-1" onClick={handleAddToCart}>Add to Cart</Button>
+            <Button size="lg" className="flex-1" onClick={handleAddToCart}>Añadir al Carrito</Button>
           </div>
           
           <Accordion type="single" collapsible className="mt-6 w-full" defaultValue="description">
             <AccordionItem value="description">
-              <AccordionTrigger>Description</AccordionTrigger>
+              <AccordionTrigger>Descripción</AccordionTrigger>
               <AccordionContent>{product.description}</AccordionContent>
             </AccordionItem>
             <AccordionItem value="specifications">
-              <AccordionTrigger>Specifications</AccordionTrigger>
+              <AccordionTrigger>Especificaciones</AccordionTrigger>
               <AccordionContent>
                 <ul className="list-disc pl-5">
                   {Object.entries(product.specifications).map(([key, value]) => (
@@ -105,7 +105,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="reviews">
-              <AccordionTrigger>Reviews ({product.reviewsCount})</AccordionTrigger>
+              <AccordionTrigger>Reseñas ({product.reviewsCount})</AccordionTrigger>
               <AccordionContent>
                 <div className="space-y-6">
                   {reviews.map(review => (
@@ -133,7 +133,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
        {relatedProducts.length > 0 && (
         <section className="mt-16">
-            <h2 className="text-3xl font-bold tracking-tight text-center font-headline mb-8">You Might Also Like</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-center font-headline mb-8">También te podría gustar</h2>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {relatedProducts.map((p) => (
                     <ProductCard key={p.id} product={p} />

@@ -30,9 +30,9 @@ export function CartSheet() {
     return (
         <>
             <SheetHeader className="pr-6">
-                <SheetTitle>Shopping Cart ({itemCount})</SheetTitle>
+                <SheetTitle>Carrito de Compras ({itemCount})</SheetTitle>
                  <SheetDescription>
-                    Items in your cart are not reserved. Check out now to make them yours.
+                    Los artículos en tu carrito no están reservados. Finaliza la compra para hacerlos tuyos.
                 </SheetDescription>
             </SheetHeader>
             <Separator className="my-4" />
@@ -75,7 +75,7 @@ export function CartSheet() {
                                 <span>${cartTotal.toFixed(2)}</span>
                             </div>
                             <div className="flex justify-between">
-                                <span>Shipping</span>
+                                <span>Envío</span>
                                 <span>${shippingCost.toFixed(2)}</span>
                             </div>
                             <Separator />
@@ -84,7 +84,7 @@ export function CartSheet() {
                                 <span>${(cartTotal + shippingCost).toFixed(2)}</span>
                             </div>
                              <Button asChild className="w-full" size="lg" onClick={toggleCart}>
-                                <Link href="/checkout">Proceed to Checkout</Link>
+                                <Link href="/checkout">Finalizar Compra</Link>
                              </Button>
                         </div>
                     </SheetFooter>
@@ -93,8 +93,8 @@ export function CartSheet() {
             ) : (
                 <div className="flex h-full flex-col items-center justify-center gap-4">
                     <ShoppingCart className="h-24 w-24 text-muted-foreground" />
-                    <p className="text-muted-foreground">Your cart is empty.</p>
-                    <Button variant="outline" onClick={toggleCart}>Keep Shopping</Button>
+                    <p className="text-muted-foreground">Tu carrito está vacío.</p>
+                    <Button variant="outline" onClick={toggleCart}>Seguir Comprando</Button>
                 </div>
             )}
             

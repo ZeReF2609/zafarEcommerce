@@ -1,3 +1,4 @@
+
 "use client"
 
 import { create } from 'zustand'
@@ -35,7 +36,7 @@ export const useCart = create<CartState>()(
                 : item
             ),
           })
-           toast({ title: "Item updated in cart", description: `${product.name} quantity increased.` });
+           toast({ title: "Artículo actualizado en el carrito", description: `Cantidad de ${product.name} aumentada.` });
         } else {
           set({
             items: [...currentItems, { 
@@ -46,14 +47,14 @@ export const useCart = create<CartState>()(
                 quantity 
             }],
           })
-          toast({ title: "Item added to cart", description: `${product.name} has been added.` });
+          toast({ title: "Artículo añadido al carrito", description: `${product.name} ha sido añadido.` });
         }
       },
       removeItem: (productId) => {
         set({
           items: get().items.filter((item) => item.id !== productId),
         })
-        toast({ title: "Item removed from cart" });
+        toast({ title: "Artículo eliminado del carrito" });
       },
       updateQuantity: (productId, quantity) => {
         if (quantity < 1) {

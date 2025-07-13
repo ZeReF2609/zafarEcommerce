@@ -31,10 +31,10 @@ export default function CheckoutPage() {
     if (items.length === 0) {
         return (
             <div className="container py-12 text-center">
-                <h1 className="text-2xl font-bold">Your cart is empty</h1>
-                <p className="text-muted-foreground">You can't proceed to checkout without any items.</p>
+                <h1 className="text-2xl font-bold">Tu carrito está vacío</h1>
+                <p className="text-muted-foreground">No puedes proceder al pago sin ningún artículo.</p>
                 <Button asChild className="mt-4">
-                    <Link href="/products">Go Shopping</Link>
+                    <Link href="/products">Ir de Compras</Link>
                 </Button>
             </div>
         );
@@ -51,8 +51,8 @@ export default function CheckoutPage() {
     }
     
     const handlePlaceOrder = () => {
-        // Here you would typically process the payment and create the order
-        alert('Order placed successfully!');
+        // Aquí normalmente procesarías el pago y crearías el pedido
+        alert('¡Pedido realizado con éxito!');
         clearCart();
         router.push('/');
     }
@@ -63,7 +63,7 @@ export default function CheckoutPage() {
                 <div className="lg:order-2">
                     <Card>
                         <CardHeader>
-                            <CardTitle>Order Summary</CardTitle>
+                            <CardTitle>Resumen del Pedido</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <div className="space-y-4">
@@ -88,7 +88,7 @@ export default function CheckoutPage() {
                                     <span>${cartTotal.toFixed(2)}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                    <span className="text-muted-foreground">Shipping</span>
+                                    <span className="text-muted-foreground">Envío</span>
                                     <span>${shippingCost.toFixed(2)}</span>
                                 </div>
                                 <Separator className="my-2" />
@@ -102,47 +102,47 @@ export default function CheckoutPage() {
                 </div>
                 <div className="lg:order-1">
                      <p className="text-sm text-muted-foreground mb-4">
-                        <Link href="/account" className="text-primary hover:underline">Log in</Link> or continue as a guest.
+                        <Link href="/account" className="text-primary hover:underline">Inicia sesión</Link> o continúa como invitado.
                     </p>
                     <Accordion type="single" value={step} collapsible>
                         <AccordionItem value="information">
                             <AccordionTrigger onClick={() => setStep('information')}>
                                 <div className="flex items-center gap-3">
                                     <User className="h-5 w-5" />
-                                    <h2 className="text-xl font-semibold">1. Customer Information</h2>
+                                    <h2 className="text-xl font-semibold">1. Información del Cliente</h2>
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent className="p-2">
                                 <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); goToNextStep(); }}>
                                     <div className="space-y-2">
-                                        <Label htmlFor="email">Email Address</Label>
-                                        <Input id="email" type="email" placeholder="you@example.com" required />
+                                        <Label htmlFor="email">Dirección de Correo Electrónico</Label>
+                                        <Input id="email" type="email" placeholder="tu@ejemplo.com" required />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="phone">Phone Number</Label>
+                                        <Label htmlFor="phone">Número de Teléfono</Label>
                                         <Input id="phone" type="tel" placeholder="+1 234 567 890" />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label>Delivery Method</Label>
+                                        <Label>Método de Entrega</Label>
                                         <RadioGroup defaultValue="delivery" value={deliveryMethod} onValueChange={setDeliveryMethod} className="grid grid-cols-2 gap-4">
                                             <Label htmlFor="delivery" className="border rounded-md p-4 flex items-center gap-2 cursor-pointer has-[:checked]:border-primary">
                                                 <RadioGroupItem value="delivery" id="delivery" />
-                                                <Truck className="h-5 w-5" /> Delivery
+                                                <Truck className="h-5 w-5" /> Envío a Domicilio
                                             </Label>
                                             <Label htmlFor="pickup" className="border rounded-md p-4 flex items-center gap-2 cursor-pointer has-[:checked]:border-primary">
                                                 <RadioGroupItem value="pickup" id="pickup" />
-                                                <Landmark className="h-5 w-5" /> Store Pickup
+                                                <Landmark className="h-5 w-5" /> Recojo en Tienda
                                             </Label>
                                         </RadioGroup>
                                     </div>
                                     <div className="flex items-end gap-2">
                                         <div className='flex-1'>
-                                            <Label htmlFor="coupon">Coupon Code</Label>
-                                            <Input id="coupon" placeholder="Enter coupon code"/>
+                                            <Label htmlFor="coupon">Código de Cupón</Label>
+                                            <Input id="coupon" placeholder="Ingresa tu cupón"/>
                                         </div>
-                                        <Button variant="outline">Apply</Button>
+                                        <Button variant="outline">Aplicar</Button>
                                     </div>
-                                    <Button type="submit" className="w-full">Continue to Shipping</Button>
+                                    <Button type="submit" className="w-full">Continuar con el Envío</Button>
                                 </form>
                             </AccordionContent>
                         </AccordionItem>
@@ -151,7 +151,7 @@ export default function CheckoutPage() {
                             <AccordionTrigger onClick={() => setStep('shipping')} disabled={step === 'information'}>
                                 <div className="flex items-center gap-3">
                                     <Truck className="h-5 w-5" />
-                                    <h2 className="text-xl font-semibold">2. Shipping Details</h2>
+                                    <h2 className="text-xl font-semibold">2. Detalles de Envío</h2>
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent className="p-2">
@@ -160,38 +160,38 @@ export default function CheckoutPage() {
                                         <>
                                             <div className="grid grid-cols-2 gap-4">
                                                 <div className="space-y-2">
-                                                    <Label htmlFor="firstName">First Name</Label>
+                                                    <Label htmlFor="firstName">Nombre</Label>
                                                     <Input id="firstName" required />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <Label htmlFor="lastName">Last Name</Label>
+                                                    <Label htmlFor="lastName">Apellido</Label>
                                                     <Input id="lastName" required />
                                                 </div>
                                             </div>
                                             <div className="space-y-2">
-                                                <Label htmlFor="address">Address</Label>
+                                                <Label htmlFor="address">Dirección</Label>
                                                 <Input id="address" required />
                                             </div>
                                             <div className="grid grid-cols-3 gap-4">
                                                 <div className="space-y-2 col-span-2">
-                                                    <Label htmlFor="city">City</Label>
+                                                    <Label htmlFor="city">Ciudad</Label>
                                                     <Input id="city" required />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <Label htmlFor="zip">ZIP Code</Label>
+                                                    <Label htmlFor="zip">Código Postal</Label>
                                                     <Input id="zip" required />
                                                 </div>
                                             </div>
                                         </>
                                     ) : (
                                         <div>
-                                            <h3 className="font-medium">Store Pickup</h3>
+                                            <h3 className="font-medium">Recojo en Tienda</h3>
                                             <p className="text-muted-foreground">123 Main St, Anytown, USA 12345</p>
                                         </div>
                                     )}
                                     <div className="flex gap-2">
-                                        <Button type="button" variant="outline" onClick={goToPrevStep}>Back</Button>
-                                        <Button type="submit" className="flex-1">Continue to Payment</Button>
+                                        <Button type="button" variant="outline" onClick={goToPrevStep}>Atrás</Button>
+                                        <Button type="submit" className="flex-1">Continuar con el Pago</Button>
                                     </div>
                                 </form>
                             </AccordionContent>
@@ -201,7 +201,7 @@ export default function CheckoutPage() {
                              <AccordionTrigger onClick={() => setStep('payment')} disabled={step !== 'payment'}>
                                 <div className="flex items-center gap-3">
                                     <CreditCard className="h-5 w-5" />
-                                    <h2 className="text-xl font-semibold">3. Payment</h2>
+                                    <h2 className="text-xl font-semibold">3. Pago</h2>
                                 </div>
                             </AccordionTrigger>
                             <AccordionContent className="p-2">
@@ -210,18 +210,18 @@ export default function CheckoutPage() {
                                         <div>
                                             <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="card" id="card" />
-                                                <Label htmlFor="card">Credit or Debit Card</Label>
+                                                <Label htmlFor="card">Tarjeta de Crédito o Débito</Label>
                                             </div>
                                             {paymentMethod === 'card' && (
                                                 <div className="pl-6 pt-4 space-y-4">
                                                     <div className="space-y-2">
-                                                        <Label htmlFor="cardNumber">Card Number</Label>
+                                                        <Label htmlFor="cardNumber">Número de Tarjeta</Label>
                                                         <Input id="cardNumber" />
                                                     </div>
                                                     <div className="grid grid-cols-2 gap-4">
                                                          <div className="space-y-2">
-                                                            <Label htmlFor="expiry">Expiry</Label>
-                                                            <Input id="expiry" placeholder="MM/YY" />
+                                                            <Label htmlFor="expiry">Expiración</Label>
+                                                            <Input id="expiry" placeholder="MM/AA" />
                                                         </div>
                                                          <div className="space-y-2">
                                                             <Label htmlFor="cvc">CVC</Label>
@@ -234,16 +234,16 @@ export default function CheckoutPage() {
                                         <div>
                                              <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="cash" id="cash" />
-                                                <Label htmlFor="cash">Cash on Delivery</Label>
+                                                <Label htmlFor="cash">Pago Contra Entrega</Label>
                                             </div>
                                             {paymentMethod === 'cash' && (
-                                                <p className="pl-6 pt-2 text-sm text-muted-foreground">You will pay when your order arrives.</p>
+                                                <p className="pl-6 pt-2 text-sm text-muted-foreground">Pagarás cuando tu pedido llegue.</p>
                                             )}
                                         </div>
                                     </RadioGroup>
                                     <div className="flex gap-2">
-                                        <Button type="button" variant="outline" onClick={goToPrevStep}>Back</Button>
-                                        <Button onClick={handlePlaceOrder} className="flex-1">Place Order</Button>
+                                        <Button type="button" variant="outline" onClick={goToPrevStep}>Atrás</Button>
+                                        <Button onClick={handlePlaceOrder} className="flex-1">Realizar Pedido</Button>
                                     </div>
                                 </div>
                             </AccordionContent>

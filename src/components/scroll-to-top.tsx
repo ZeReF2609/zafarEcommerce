@@ -39,7 +39,7 @@ export function ScrollToTop() {
         "fixed bottom-4 right-4 z-50 transition-opacity duration-300",
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
-      aria-label="Scroll to top"
+      aria-label="Volver arriba"
     >
       <ArrowUp className="h-4 w-4" />
     </Button>

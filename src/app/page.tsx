@@ -58,13 +58,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl font-headline">
-            Summer Collection is Here
+            La Colección de Verano ya está Aquí
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-gray-200">
-            Discover the latest trends and define your style with our new arrivals.
+            Descubre las últimas tendencias y define tu estilo con nuestras novedades.
           </p>
           <Button asChild size="lg" className="mt-8">
-            <Link href="/collections/summer-collection">Shop The Collection</Link>
+            <Link href="/collections/summer-collection">Compra la Colección</Link>
           </Button>
         </div>
       </section>
@@ -84,7 +84,7 @@ export default function Home() {
                             />
                         </div>
                         <div className="flex flex-col justify-center p-8 lg:p-12">
-                            <h3 className="text-sm uppercase tracking-widest text-primary font-semibold">Deal of the Day</h3>
+                            <h3 className="text-sm uppercase tracking-widest text-primary font-semibold">Oferta del Día</h3>
                             <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl font-headline">{dealOfTheDay.name}</h2>
                             <p className="mt-4 text-muted-foreground">{dealOfTheDay.description}</p>
                             <div className="mt-4 flex items-baseline gap-2">
@@ -93,7 +93,7 @@ export default function Home() {
                             </div>
                             <CountdownTimer targetDate={offerEndDate} />
                             <Button asChild size="lg" className="mt-6 w-full sm:w-auto">
-                                <Link href={`/products/${dealOfTheDay.id}`}>Shop Now</Link>
+                                <Link href={`/products/${dealOfTheDay.id}`}>Comprar Ahora</Link>
                             </Button>
                         </div>
                     </div>
@@ -104,9 +104,9 @@ export default function Home() {
 
       <section className="py-16 sm:py-20 lg:py-24">
         <div className="container mb-12 text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Featured Products</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Productos Destacados</h2>
             <p className="mt-2 text-lg text-muted-foreground">
-                Hand-picked by us, just for you.
+                Seleccionados por nosotros, solo para ti.
             </p>
         </div>
         <div className="w-full">
@@ -121,7 +121,7 @@ export default function Home() {
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
             >
-              <CarouselContent className="-ml-4">
+              <CarouselContent className="ml-0 pl-4 pr-8 sm:pr-12 md:pr-16">
                 {featuredProducts.map((product, index) => (
                   <CarouselItem key={product.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5 pl-4">
                     <div className="p-1">
@@ -142,13 +142,13 @@ export default function Home() {
         <div className="container">
             <Tabs defaultValue="new-arrivals" className="w-full">
             <div className="mb-8 flex flex-col items-center justify-center text-center">
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Our Collections</h2>
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Nuestras Colecciones</h2>
                 <p className="mt-2 text-lg text-muted-foreground">
-                    Check out what's new and trending.
+                    Descubre lo nuevo y lo que está en tendencia.
                 </p>
                 <TabsList className="mt-4 grid w-full max-w-md grid-cols-2">
-                    <TabsTrigger value="new-arrivals">New Arrivals</TabsTrigger>
-                    <TabsTrigger value="summer-collection">Summer Collection</TabsTrigger>
+                    <TabsTrigger value="new-arrivals">Novedades</TabsTrigger>
+                    <TabsTrigger value="summer-collection">Colección de Verano</TabsTrigger>
                 </TabsList>
             </div>
             

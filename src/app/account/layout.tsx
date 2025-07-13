@@ -7,10 +7,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { href: "/account", label: "Profile", icon: User },
-  { href: "/account/orders", label: "Orders", icon: Package },
-  { href: "/account/favorites", label: "Favorites", icon: Heart },
-  { href: "/account/security", label: "Security", icon: Lock },
+  { href: "/account", label: "Perfil", icon: User },
+  { href: "/account/orders", label: "Pedidos", icon: Package },
+  { href: "/account/favorites", label: "Favoritos", icon: Heart },
+  { href: "/account/security", label: "Seguridad", icon: Lock },
 ];
 
 export default function AccountLayout({
@@ -22,7 +22,7 @@ export default function AccountLayout({
 
   return (
     <div className="container mx-auto my-8">
-        <h1 className="text-3xl font-bold tracking-tight md:text-4xl font-headline mb-8">My Account</h1>
+        <h1 className="text-3xl font-bold tracking-tight md:text-4xl font-headline mb-8">Mi Cuenta</h1>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <aside className="md:col-span-1">
                 <nav className="flex flex-col space-y-2">

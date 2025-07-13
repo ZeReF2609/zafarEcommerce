@@ -14,10 +14,10 @@ import { useCart } from '@/hooks/use-cart';
 import { CartSheet } from '@/components/cart-sheet';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/products', label: 'All Products' },
-  { href: '/collections/new-arrivals', label: 'New Arrivals' },
-  { href: '/collections/summer-collection', label: 'Summer Collection' },
+  { href: '/', label: 'Inicio' },
+  { href: '/products', label: 'Todos los Productos' },
+  { href: '/collections/new-arrivals', label: 'Novedades' },
+  { href: '/collections/summer-collection', label: 'Colección de Verano' },
 ];
 
 export function Header() {
@@ -55,7 +55,7 @@ export function Header() {
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6" />
-                  <span className="sr-only">Toggle Menu</span>
+                  <span className="sr-only">Abrir Menú</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-[300px] sm:w-[400px]">
@@ -73,7 +73,7 @@ export function Header() {
                     </Link>
                   ))}
                     <Link href="/account" className="text-lg transition-colors hover:text-primary">
-                      My Account
+                      Mi Cuenta
                     </Link>
                 </nav>
               </SheetContent>
@@ -91,7 +91,7 @@ export function Header() {
                   <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                   <Input
                     type="search"
-                    placeholder="Search products..."
+                    placeholder="Buscar productos..."
                     className="w-full rounded-lg bg-secondary pl-8 md:w-[200px] lg:w-[320px]"
                   />
                 </div>
@@ -100,7 +100,7 @@ export function Header() {
             <Link href="/account">
               <Button variant="ghost" size="icon">
                 <User className="h-5 w-5" />
-                <span className="sr-only">Account</span>
+                <span className="sr-only">Cuenta</span>
               </Button>
             </Link>
             <Sheet open={isCartOpen} onOpenChange={toggleCart}>
@@ -110,7 +110,7 @@ export function Header() {
                   {isMounted && itemCount > 0 && (
                     <Badge variant="destructive" className="absolute -right-2 -top-2 h-5 w-5 justify-center rounded-full p-0 text-xs">{itemCount}</Badge>
                   )}
-                  <span className="sr-only">Shopping Cart</span>
+                  <span className="sr-only">Carrito de Compras</span>
                 </Button>
               </SheetTrigger>
               <SheetContent className="flex w-full flex-col pr-0 sm:max-w-lg">

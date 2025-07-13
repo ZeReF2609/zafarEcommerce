@@ -10,9 +10,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { useToast } from "@/hooks/use-toast"
 
 const profileFormSchema = z.object({
-    firstName: z.string().min(2, "First name must be at least 2 characters."),
-    lastName: z.string().min(2, "Last name must be at least 2 characters."),
-    email: z.string().email("Please enter a valid email address."),
+    firstName: z.string().min(2, "El nombre debe tener al menos 2 caracteres."),
+    lastName: z.string().min(2, "El apellido debe tener al menos 2 caracteres."),
+    email: z.string().email("Por favor, introduce una dirección de correo válida."),
     phone: z.string().optional(),
 })
 
@@ -34,15 +34,15 @@ export default function AccountProfilePage() {
     function onSubmit(data: ProfileFormValues) {
         console.log(data)
         toast({
-            title: "Profile Updated",
-            description: "Your personal information has been saved.",
+            title: "Perfil Actualizado",
+            description: "Tu información personal ha sido guardada.",
         })
     }
 
     return (
         <div>
-            <h2 className="text-2xl font-bold mb-4">Profile Settings</h2>
-            <p className="text-muted-foreground mb-6">Manage your personal information.</p>
+            <h2 className="text-2xl font-bold mb-4">Ajustes de Perfil</h2>
+            <p className="text-muted-foreground mb-6">Administra tu información personal.</p>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -51,7 +51,7 @@ export default function AccountProfilePage() {
                             name="firstName"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>First Name</FormLabel>
+                                    <FormLabel>Nombre</FormLabel>
                                     <FormControl>
                                         <Input placeholder="John" {...field} />
                                     </FormControl>
@@ -64,7 +64,7 @@ export default function AccountProfilePage() {
                             name="lastName"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Last Name</FormLabel>
+                                    <FormLabel>Apellido</FormLabel>
                                     <FormControl>
                                         <Input placeholder="Doe" {...field} />
                                     </FormControl>
@@ -78,9 +78,9 @@ export default function AccountProfilePage() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
+                                <FormLabel>Correo Electrónico</FormLabel>
                                 <FormControl>
-                                    <Input type="email" placeholder="you@example.com" {...field} />
+                                    <Input type="email" placeholder="tu@ejemplo.com" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -91,7 +91,7 @@ export default function AccountProfilePage() {
                         name="phone"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Phone Number</FormLabel>
+                                <FormLabel>Número de Teléfono</FormLabel>
                                 <FormControl>
                                     <Input type="tel" placeholder="+1 234 567 890" {...field} />
                                 </FormControl>
@@ -100,7 +100,7 @@ export default function AccountProfilePage() {
                         )}
                     />
                     <div className="mt-6 flex justify-end">
-                        <Button type="submit">Save Changes</Button>
+                        <Button type="submit">Guardar Cambios</Button>
                     </div>
                 </form>
             </Form>

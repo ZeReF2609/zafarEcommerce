@@ -24,7 +24,7 @@ export interface Review {
 export interface Order {
   id: string;
   date: string;
-  status: 'Delivered' | 'Processing' | 'Cancelled';
+  status: 'Entregado' | 'Procesando' | 'Cancelado';
   total: number;
   items: CartItem[];
 }

@@ -39,7 +39,7 @@ export function ProductCard({ product }: ProductCardProps) {
             />
             {product.originalPrice && (
               <Badge className="absolute left-3 top-3">
-                SALE
+                OFERTA
               </Badge>
             )}
           </div>
@@ -58,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
                     {product.originalPrice && <span className="text-xs text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>}
                     <span className="text-base font-bold text-foreground">${product.price.toFixed(2)}</span>
                 </div>
-                <Button size="icon" variant="outline" onClick={handleAddToCart} aria-label="Add to cart" className="h-9 w-9">
+                <Button size="icon" variant="outline" onClick={handleAddToCart} aria-label="Añadir al carrito" className="h-9 w-9">
                   <ShoppingCart className="h-4 w-4" />
                 </Button>
             </div>

@@ -7,7 +7,7 @@ export default function FavoritesPage() {
 
     return (
         <div>
-            <h2 className="text-2xl font-bold mb-4">Your Favorites</h2>
+            <h2 className="text-2xl font-bold mb-4">Tus Favoritos</h2>
             {favoriteProducts.length > 0 ? (
                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {favoriteProducts.map((product) => (
@@ -17,9 +17,9 @@ export default function FavoritesPage() {
             ) : (
                 <div className="text-center py-12 border-2 border-dashed rounded-lg">
                     <Heart className="mx-auto h-12 w-12 text-muted-foreground" />
-                    <h3 className="mt-4 text-lg font-medium">No Favorites Yet</h3>
+                    <h3 className="mt-4 text-lg font-medium">Aún no tienes favoritos</h3>
                     <p className="mt-1 text-sm text-muted-foreground">
-                        You haven't added any products to your favorites.
+                        No has añadido ningún producto a tus favoritos.
                     </p>
                 </div>
             )}

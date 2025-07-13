@@ -8,23 +8,23 @@ interface CountdownTimerProps {
 }
 
 interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+  días: number;
+  horas: number;
+  minutos: number;
+  segundos: number;
 }
 
 export function CountdownTimer({ targetDate }: CountdownTimerProps) {
   const calculateTimeLeft = (): TimeLeft => {
     const difference = +targetDate - +new Date();
-    let timeLeft: TimeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    let timeLeft: TimeLeft = { días: 0, horas: 0, minutos: 0, segundos: 0 };
 
     if (difference > 0) {
       timeLeft = {
-        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((difference / 1000 / 60) % 60),
-        seconds: Math.floor((difference / 1000) % 60),
+        días: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        horas: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutos: Math.floor((difference / 1000 / 60) % 60),
+        segundos: Math.floor((difference / 1000) % 60),
       };
     }
 
@@ -58,7 +58,7 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
 
   return (
     <div className="mt-6 flex justify-center space-x-4 md:space-x-8">
-      {timerComponents.length ? timerComponents : <span>Time's up!</span>}
+      {timerComponents.length ? timerComponents : <span>¡Se acabó el tiempo!</span>}
     </div>
   );
 }

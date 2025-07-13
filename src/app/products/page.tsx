@@ -83,10 +83,10 @@ export default function ProductsPage() {
 
   const FiltersSidebar = () => (
     <Card className="p-4">
-        <h3 className="text-lg font-semibold mb-4">Filters</h3>
+        <h3 className="text-lg font-semibold mb-4">Filtros</h3>
         <div className="space-y-6">
              <div>
-                <h4 className="font-semibold mb-2">Collection</h4>
+                <h4 className="font-semibold mb-2">Colección</h4>
                 <div className="space-y-2">
                     {allCollections.map(c => (
                         <div key={c} className="flex items-center space-x-2">
@@ -97,7 +97,7 @@ export default function ProductsPage() {
                 </div>
             </div>
             <div>
-                <h4 className="font-semibold mb-2">Tags</h4>
+                <h4 className="font-semibold mb-2">Etiquetas</h4>
                  <div className="space-y-2">
                     {allTags.map(t => (
                         <div key={t} className="flex items-center space-x-2">
@@ -108,7 +108,7 @@ export default function ProductsPage() {
                 </div>
             </div>
             <div>
-                <h4 className="font-semibold mb-2">Price Range</h4>
+                <h4 className="font-semibold mb-2">Rango de Precios</h4>
                 <Slider
                     defaultValue={[maxPrice]}
                     max={maxPrice}
@@ -123,8 +123,8 @@ export default function ProductsPage() {
             </div>
         </div>
         <div className="mt-8 flex flex-col gap-2">
-            <Button onClick={applyFiltersAndSorting}>Apply Filters</Button>
-            <Button variant="ghost" onClick={resetFilters}>Reset</Button>
+            <Button onClick={applyFiltersAndSorting}>Aplicar Filtros</Button>
+            <Button variant="ghost" onClick={resetFilters}>Reiniciar</Button>
         </div>
     </Card>
   );
@@ -132,8 +132,8 @@ export default function ProductsPage() {
   return (
     <div className="container py-8 md:py-12">
       <div className="mb-8 text-center">
-        <h1 className="text-4xl font-bold tracking-tight font-headline">All Products</h1>
-        <p className="mt-2 text-lg text-muted-foreground">Find your next favorite thing.</p>
+        <h1 className="text-4xl font-bold tracking-tight font-headline">Todos los Productos</h1>
+        <p className="mt-2 text-lg text-muted-foreground">Encuentra tu próximo artículo favorito.</p>
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
@@ -155,16 +155,16 @@ export default function ProductsPage() {
                         </SheetContent>
                     </Sheet>
                 </div>
-                <p className="text-sm text-muted-foreground">{filteredProducts.length} products found</p>
+                <p className="text-sm text-muted-foreground">{filteredProducts.length} productos encontrados</p>
                 <Select value={sortOrder} onValueChange={setSortOrder}>
                     <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Sort by" />
+                        <SelectValue placeholder="Ordenar por" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="newest">Newest</SelectItem>
-                        <SelectItem value="price-asc">Price: Low to High</SelectItem>
-                        <SelectItem value="price-desc">Price: High to Low</SelectItem>
-                        <SelectItem value="rating">Highest Rating</SelectItem>
+                        <SelectItem value="newest">Más nuevos</SelectItem>
+                        <SelectItem value="price-asc">Precio: Bajo a Alto</SelectItem>
+                        <SelectItem value="price-desc">Precio: Alto a Bajo</SelectItem>
+                        <SelectItem value="rating">Mejor Calificados</SelectItem>
                     </SelectContent>
                 </Select>
             </div>
@@ -176,8 +176,8 @@ export default function ProductsPage() {
                 </div>
             ) : (
                 <div className="text-center py-20">
-                    <h2 className="text-2xl font-semibold">No Products Found</h2>
-                    <p className="text-muted-foreground mt-2">Try adjusting your filters.</p>
+                    <h2 className="text-2xl font-semibold">No se encontraron productos</h2>
+                    <p className="text-muted-foreground mt-2">Intenta ajustar tus filtros.</p>
                 </div>
             )}
         </main>

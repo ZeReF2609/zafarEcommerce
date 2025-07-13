@@ -7,7 +7,7 @@ import { ScrollToTop } from '@/components/scroll-to-top';
 
 export const metadata: Metadata = {
   title: 'ShopSphere',
-  description: 'The best place to shop for cool things.',
+  description: 'El mejor lugar para comprar cosas geniales.',
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
