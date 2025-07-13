@@ -89,7 +89,9 @@ export default function Home() {
                             <p className="mt-4 text-muted-foreground">{dealOfTheDay.description}</p>
                             <div className="mt-4 flex items-baseline gap-2">
                                 <span className="text-3xl font-bold text-foreground">${dealOfTheDay.price.toFixed(2)}</span>
-                                <span className="text-xl text-muted-foreground line-through">${dealOfTheDay.originalPrice?.toFixed(2)}</span>
+                                {dealOfTheDay.originalPrice && (
+                                    <span className="text-xl text-muted-foreground line-through">${dealOfTheDay.originalPrice?.toFixed(2)}</span>
+                                )}
                             </div>
                             <CountdownTimer targetDate={offerEndDate} />
                             <Button asChild size="lg" className="mt-6 w-full sm:w-auto">
@@ -121,7 +123,7 @@ export default function Home() {
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
             >
-              <CarouselContent className="ml-0 pl-4 pr-8 sm:pr-12 md:pr-16">
+              <CarouselContent className="-ml-1 pl-4 md:pl-6 lg:pl-8">
                 {featuredProducts.map((product, index) => (
                   <CarouselItem key={product.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5 pl-4">
                     <div className="p-1">
@@ -141,12 +143,12 @@ export default function Home() {
       <section className="py-16 sm:py-20 lg:py-24 bg-secondary/50">
         <div className="container">
             <Tabs defaultValue="new-arrivals" className="w-full">
-            <div className="mb-8 flex flex-col items-center justify-center text-center">
+            <div className="mb-12 flex flex-col items-center justify-center text-center">
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Nuestras Colecciones</h2>
                 <p className="mt-2 text-lg text-muted-foreground">
                     Descubre lo nuevo y lo que está en tendencia.
                 </p>
-                <TabsList className="mt-4 grid w-full max-w-md grid-cols-2">
+                <TabsList className="mt-6 grid w-full max-w-md grid-cols-2">
                     <TabsTrigger value="new-arrivals">Novedades</TabsTrigger>
                     <TabsTrigger value="summer-collection">Colección de Verano</TabsTrigger>
                 </TabsList>
