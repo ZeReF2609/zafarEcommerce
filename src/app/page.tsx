@@ -10,33 +10,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ProductCard } from '@/components/product-card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
-import { Skeleton } from '@/components/ui/skeleton';
 import { CountdownTimer } from '@/components/countdown-timer';
 import { Card, CardContent } from '@/components/ui/card';
-
-function ProductCarouselSkeleton() {
-  return (
-    <div className="w-full">
-      <div className="flex space-x-4">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="min-w-0 shrink-0 grow-0 basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5">
-            <Skeleton className="h-[350px] w-full" />
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function ProductGridSkeleton() {
-  return (
-    <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-      {[...Array(5)].map((_, i) => (
-        <Skeleton key={i} className="h-[350px] w-full" />
-      ))}
-    </div>
-  )
-}
+import { ProductCarouselLoader, ProductGridLoader } from '@/components/loading-animation';
 
 const heroSlides = [
     {
@@ -171,7 +147,7 @@ export default function Home() {
             </p>
         </div>
         <div className="w-full">
-          <Suspense fallback={<ProductCarouselSkeleton />}>
+          <Suspense fallback={<ProductCarouselLoader />}>
             <Carousel
               plugins={[plugin.current]}
               opts={{
@@ -214,7 +190,7 @@ export default function Home() {
             </div>
             
             <TabsContent value="new-arrivals">
-              <Suspense fallback={<ProductGridSkeleton />}>
+              <Suspense fallback={<ProductGridLoader />}>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {newArrivals.map((product) => (
                     <ProductCard key={product.id} product={product} />
@@ -223,7 +199,7 @@ export default function Home() {
               </Suspense>
             </TabsContent>
             <TabsContent value="summer-collection">
-              <Suspense fallback={<ProductGridSkeleton />}>
+              <Suspense fallback={<ProductGridLoader />}>
                 <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {summerCollection.map((product) => (
                     <ProductCard key={product.id} product={product} />

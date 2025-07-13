@@ -14,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { CreditCard, Landmark, Truck, User } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 type CheckoutStep = 'information' | 'shipping' | 'payment';
 
@@ -51,7 +52,7 @@ export default function CheckoutPage() {
     }
     
     const handlePlaceOrder = () => {
-        // Aquí normalmente procesarías el pago y crearías el pedido
+        // Aquí normally you would process the payment and create the order
         alert('¡Pedido realizado con éxito!');
         clearCart();
         router.push('/');
