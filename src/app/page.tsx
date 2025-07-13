@@ -103,13 +103,13 @@ export default function Home() {
       )}
 
       <section className="py-16 sm:py-20 lg:py-24">
-        <div className="container">
-          <div className="mb-12 text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Featured Products</h2>
-              <p className="mt-2 text-lg text-muted-foreground">
-                  Hand-picked by us, just for you.
-              </p>
-          </div>
+        <div className="container mb-12 text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl font-headline">Featured Products</h2>
+            <p className="mt-2 text-lg text-muted-foreground">
+                Hand-picked by us, just for you.
+            </p>
+        </div>
+        <div className="w-full">
           <Suspense fallback={<ProductCarouselSkeleton />}>
             <Carousel
               plugins={[plugin.current]}
@@ -121,17 +121,17 @@ export default function Home() {
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
             >
-              <CarouselContent className="-ml-2">
-                {featuredProducts.map((product) => (
-                  <CarouselItem key={product.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5 pl-2">
+              <CarouselContent className="-ml-4">
+                {featuredProducts.map((product, index) => (
+                  <CarouselItem key={product.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5 pl-4">
                     <div className="p-1">
                         <ProductCard product={product} />
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2" />
-              <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2" />
+              <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10" />
+              <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10" />
             </Carousel>
           </Suspense>
         </div>
