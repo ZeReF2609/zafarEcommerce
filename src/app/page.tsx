@@ -38,6 +38,33 @@ function ProductGridSkeleton() {
   )
 }
 
+const heroSlides = [
+    {
+        title: "La Colección de Verano ya está Aquí",
+        description: "Descubre las últimas tendencias y define tu estilo con nuestras novedades.",
+        buttonText: "Compra la Colección",
+        href: "/collections/summer-collection",
+        image: "https://placehold.co/1600x900.png",
+        hint: "fashion lifestyle modern"
+    },
+    {
+        title: "Novedades que te Encantarán",
+        description: "Lo último en moda acaba de llegar. Sé el primero en descubrirlo.",
+        buttonText: "Ver Novedades",
+        href: "/collections/new-arrivals",
+        image: "https://placehold.co/1600x900.png",
+        hint: "clothing rack store"
+    },
+    {
+        title: "Accesorios para Completar tu Look",
+        description: "Desde bolsos hasta relojes, encuentra el complemento perfecto.",
+        buttonText: "Explorar Accesorios",
+        href: "/products",
+        image: "https://placehold.co/1600x900.png",
+        hint: "watch sunglasses accessory"
+    }
+]
+
 export default function Home() {
   const newArrivals = products.filter(p => p.collection === 'new-arrivals').slice(0, 5);
   const summerCollection = products.filter(p => p.collection === 'summer-collection').slice(0, 5);
@@ -47,6 +74,10 @@ export default function Home() {
   const plugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
   );
+  
+  const heroPlugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
 
   const offerEndDate = new Date();
   offerEndDate.setDate(offerEndDate.getDate() + 1);
@@ -54,19 +85,37 @@ export default function Home() {
 
   return (
     <div className="animate-fade-in">
-      <section className="relative h-[80vh] bg-cover bg-center" style={{ backgroundImage: "url('https://placehold.co/1600x900.png')" }} data-ai-hint="fashion lifestyle modern">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
-        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl font-headline">
-            La Colección de Verano ya está Aquí
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-gray-200">
-            Descubre las últimas tendencias y define tu estilo con nuestras novedades.
-          </p>
-          <Button asChild size="lg" className="mt-8">
-            <Link href="/collections/summer-collection">Compra la Colección</Link>
-          </Button>
-        </div>
+      <section className="relative h-[80vh] w-full">
+         <Carousel
+            plugins={[heroPlugin.current]}
+            className="w-full h-full"
+            opts={{ loop: true }}
+            onMouseEnter={heroPlugin.current.stop}
+            onMouseLeave={heroPlugin.current.reset}
+          >
+            <CarouselContent className="h-full">
+              {heroSlides.map((slide, index) => (
+                <CarouselItem key={index} className="h-full">
+                    <div className="relative h-full w-full bg-cover bg-center" style={{ backgroundImage: `url('${slide.image}')` }} data-ai-hint={slide.hint}>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
+                        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
+                            <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl font-headline">
+                                {slide.title}
+                            </h1>
+                            <p className="mt-4 max-w-2xl text-lg text-gray-200">
+                                {slide.description}
+                            </p>
+                            <Button asChild size="lg" className="mt-8">
+                                <Link href={slide.href}>{slide.buttonText}</Link>
+                            </Button>
+                        </div>
+                    </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 hidden md:flex" />
+        </Carousel>
       </section>
 
       {dealOfTheDay && (
