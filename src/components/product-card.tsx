@@ -43,9 +43,9 @@ export function ProductCard({ product }: ProductCardProps) {
               </Badge>
             )}
           </div>
-          <div className="flex flex-1 flex-col p-4">
+          <div className="flex flex-1 flex-col p-3 md:p-4">
             <div className="flex-1">
-              <h3 className="mb-1 text-base font-semibold leading-tight group-hover:text-primary transition-colors">
+              <h3 className="mb-1 text-sm font-semibold leading-tight group-hover:text-primary transition-colors">
                 {product.name}
               </h3>
               <div className="flex items-center">
@@ -53,10 +53,10 @@ export function ProductCard({ product }: ProductCardProps) {
                   <span className="ml-2 text-xs text-muted-foreground">({product.reviewsCount})</span>
               </div>
             </div>
-            <div className="flex items-end justify-between pt-4">
+            <div className="flex items-end justify-between pt-3">
                 <div className="flex flex-col items-start">
                     {product.originalPrice && <span className="text-xs text-muted-foreground line-through">${product.originalPrice.toFixed(2)}</span>}
-                    <span className="text-lg font-bold text-foreground">${product.price.toFixed(2)}</span>
+                    <span className="text-base font-bold text-foreground">${product.price.toFixed(2)}</span>
                 </div>
                 <Button size="icon" variant="outline" onClick={handleAddToCart} aria-label="Add to cart" className="h-9 w-9">
                   <ShoppingCart className="h-4 w-4" />

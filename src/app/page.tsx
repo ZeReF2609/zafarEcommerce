@@ -3,6 +3,7 @@
 
 import Link from 'next/link';
 import React, { Suspense } from 'react';
+import Image from 'next/image';
 import { products } from '@/lib/placeholder-data';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -10,13 +11,15 @@ import { ProductCard } from '@/components/product-card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from "embla-carousel-autoplay";
 import { Skeleton } from '@/components/ui/skeleton';
+import { CountdownTimer } from '@/components/countdown-timer';
+import { Card, CardContent } from '@/components/ui/card';
 
 function ProductCarouselSkeleton() {
   return (
     <div className="w-full">
       <div className="flex space-x-4">
         {[...Array(5)].map((_, i) => (
-          <div key={i} className="flex-shrink-0 basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5">
+          <div key={i} className="min-w-0 shrink-0 grow-0 basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5">
             <Skeleton className="h-[350px] w-full" />
           </div>
         ))}
@@ -27,7 +30,7 @@ function ProductCarouselSkeleton() {
 
 function ProductGridSkeleton() {
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
       {[...Array(5)].map((_, i) => (
         <Skeleton key={i} className="h-[350px] w-full" />
       ))}
@@ -39,27 +42,65 @@ export default function Home() {
   const newArrivals = products.filter(p => p.collection === 'new-arrivals').slice(0, 5);
   const summerCollection = products.filter(p => p.collection === 'summer-collection').slice(0, 5);
   const featuredProducts = [...products].sort((a, b) => b.rating - a.rating).slice(0, 8);
+  const dealOfTheDay = products.find(p => p.originalPrice);
   
   const plugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
   );
 
+  const offerEndDate = new Date();
+  offerEndDate.setDate(offerEndDate.getDate() + 1);
+  offerEndDate.setHours(23, 59, 59, 999);
+
   return (
     <div className="animate-fade-in">
-      <section className="relative h-[70vh] bg-cover bg-center" style={{ backgroundImage: "url('https://placehold.co/1600x900.png')" }} data-ai-hint="fashion lifestyle modern">
+      <section className="relative h-[80vh] bg-cover bg-center" style={{ backgroundImage: "url('https://placehold.co/1600x900.png')" }} data-ai-hint="fashion lifestyle modern">
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl font-headline">
-            Define Your Style
+            Summer Collection is Here
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-gray-200">
-            Explore our curated collections of premium apparel, accessories, and gadgets.
+            Discover the latest trends and define your style with our new arrivals.
           </p>
           <Button asChild size="lg" className="mt-8">
-            <Link href="/products">Shop The Collection</Link>
+            <Link href="/collections/summer-collection">Shop The Collection</Link>
           </Button>
         </div>
       </section>
+
+      {dealOfTheDay && (
+        <section className="py-16 sm:py-20 lg:py-24">
+            <div className="container">
+                <Card className="overflow-hidden">
+                    <div className="grid md:grid-cols-2">
+                         <div className="relative aspect-video md:aspect-auto">
+                            <Image 
+                                src={dealOfTheDay.images[0]} 
+                                alt={dealOfTheDay.name}
+                                fill
+                                className="object-cover"
+                                data-ai-hint="fashion product lifestyle"
+                            />
+                        </div>
+                        <div className="flex flex-col justify-center p-8 lg:p-12">
+                            <h3 className="text-sm uppercase tracking-widest text-primary font-semibold">Deal of the Day</h3>
+                            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl font-headline">{dealOfTheDay.name}</h2>
+                            <p className="mt-4 text-muted-foreground">{dealOfTheDay.description}</p>
+                            <div className="mt-4 flex items-baseline gap-2">
+                                <span className="text-3xl font-bold text-foreground">${dealOfTheDay.price.toFixed(2)}</span>
+                                <span className="text-xl text-muted-foreground line-through">${dealOfTheDay.originalPrice?.toFixed(2)}</span>
+                            </div>
+                            <CountdownTimer targetDate={offerEndDate} />
+                            <Button asChild size="lg" className="mt-6 w-full sm:w-auto">
+                                <Link href={`/products/${dealOfTheDay.id}`}>Shop Now</Link>
+                            </Button>
+                        </div>
+                    </div>
+                </Card>
+            </div>
+        </section>
+      )}
 
       <section className="py-16 sm:py-20 lg:py-24">
         <div className="container">
@@ -80,9 +121,9 @@ export default function Home() {
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
             >
-              <CarouselContent>
+              <CarouselContent className="-ml-2">
                 {featuredProducts.map((product) => (
-                  <CarouselItem key={product.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5">
+                  <CarouselItem key={product.id} className="basis-1/2 sm:basis-1/3 md:basis-1/4 xl:basis-1/5 pl-2">
                     <div className="p-1">
                         <ProductCard product={product} />
                     </div>
@@ -113,7 +154,7 @@ export default function Home() {
             
             <TabsContent value="new-arrivals">
               <Suspense fallback={<ProductGridSkeleton />}>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {newArrivals.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
@@ -122,7 +163,7 @@ export default function Home() {
             </TabsContent>
             <TabsContent value="summer-collection">
               <Suspense fallback={<ProductGridSkeleton />}>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
                 {summerCollection.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}
