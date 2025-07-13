@@ -1,3 +1,4 @@
+
 import { products } from "@/lib/placeholder-data";
 import { ProductCard } from "@/components/product-card";
 import { Heart } from "lucide-react";

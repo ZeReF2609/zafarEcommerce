@@ -1,3 +1,4 @@
+
 import type { Product, Review, Order, CartItem } from '@/types';
 
 export const products: Product[] = [

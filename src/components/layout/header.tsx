@@ -38,20 +38,9 @@ export function Header() {
           <Link href="/" className="mr-6">
             <Logo className="text-white" />
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white/80 transition-colors hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
         </div>
         
-        <div className="flex flex-1 items-center justify-between md:justify-end">
+        <div className="flex flex-1 items-center justify-between md:justify-center">
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
@@ -82,13 +71,26 @@ export function Header() {
             </Sheet>
           </div>
         
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-white/80 transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
           <div className="md:hidden">
             <Link href="/">
                 <Logo className="text-white" />
             </Link>
           </div>
+        </div>
 
-          <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2">
             <div className="hidden sm:block">
               <form>
                 <div className="relative">
@@ -96,7 +98,7 @@ export function Header() {
                   <Input
                     type="search"
                     placeholder="Buscar productos..."
-                    className="w-full rounded-lg pl-8 bg-white/10 text-white placeholder:text-white/60 border-white/20 md:w-[200px] lg:w-[320px]"
+                    className="w-full rounded-lg pl-8 bg-white/10 text-white placeholder:text-white/60 border-white/20 md:w-[200px] lg:w-[240px]"
                   />
                 </div>
               </form>
@@ -121,7 +123,6 @@ export function Header() {
                 <CartSheet />
               </SheetContent>
             </Sheet>
-          </div>
         </div>
       </div>
     </header>
