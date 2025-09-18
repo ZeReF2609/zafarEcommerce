@@ -1,118 +1,149 @@
-# Documentación del Proyecto: E-commerce "Zafar"
-
-## 1. Introducción
-
-Este documento detalla la arquitectura, tecnologías y funcionalidades del proyecto de e-commerce "Zafar". El objetivo es proporcionar una guía clara para desarrolladores y cualquier persona interesada en entender cómo está construida la aplicación.
-
-La tienda está diseñada para ser una plataforma de venta de ropa y accesorios moderna, rápida y completamente adaptable a cualquier dispositivo.
+# 🛍️ Documentación del Proyecto: **E-commerce "Zafar"**
 
 ---
 
-## 2. Tecnologías Utilizadas (Tech Stack)
+## 📖 1. Introducción
 
-La aplicación se ha construido utilizando un conjunto de tecnologías modernas y eficientes:
+Este documento detalla la **arquitectura**, **tecnologías** y **funcionalidades** del proyecto de e-commerce **Zafar**.  
+El objetivo es proporcionar una guía clara para desarrolladores y cualquier persona interesada en entender cómo está construida la aplicación.
 
-- **Framework Principal**: **Next.js 15** con **React 18**. Se utiliza el App Router para un enrutamiento optimizado y renderizado del lado del servidor (SSR) y del lado del cliente (CSR).
-- **Lenguaje**: **TypeScript**, para un código más robusto, seguro y fácil de mantener.
-- **Estilos**: **Tailwind CSS**, un framework de CSS "utility-first" que permite construir diseños personalizados de manera rápida y eficiente.
-- **Componentes de UI**: **ShadCN UI**, una colección de componentes de interfaz de usuario reutilizables, accesibles y estéticamente agradables, construidos sobre Radix UI y Tailwind CSS.
-- **Gestión de Estado**: **Zustand**, un gestor de estado pequeño, rápido y escalable, utilizado principalmente para el carrito de compras.
-- **Inteligencia Artificial**: **Genkit** (de Google), integrado y listo para añadir futuras funcionalidades de IA generativa, como asistentes de compra, descripciones de productos automáticas, etc.
-- **Formularios**: **React Hook Form** con **Zod** para la validación de esquemas, garantizando formularios robustos y seguros.
+La tienda está diseñada para ser una **plataforma moderna de ropa y accesorios**, rápida y completamente adaptable a cualquier dispositivo.
 
 ---
 
-## 3. Funcionalidades Clave Implementadas
+## 🛠️ 2. Tecnologías Utilizadas (Tech Stack)
 
-- **Catálogo de Productos**:
-  - Página de listado de todos los productos con filtros y ordenación.
-  - Páginas de colecciones (ej. "Novedades", "Colección de Verano").
-  - Página de detalle de producto con carrusel de imágenes, descripción, especificaciones y reseñas.
-- **Página de Inicio Dinámica**:
-  - Carrusel de banners principal para destacar promociones.
-  - Sección de "Oferta del Día" con un cronómetro de cuenta regresiva para crear urgencia.
-  - Carrusel de productos destacados.
-- **Carrito de Compras**:
-  - Un carrito persistente (usando `localStorage`) que se puede abrir y cerrar desde un panel lateral (`Sheet`).
-  - Funcionalidad para añadir, eliminar y actualizar la cantidad de productos.
-- **Proceso de Compra (Checkout)**:
-  - Una página de checkout en varios pasos (Información, Envío, Pago) para una experiencia de usuario fluida.
-- **Sección de Cuenta de Usuario**:
-  - Un panel de cuenta con navegación lateral.
-  - Secciones para gestionar el perfil, ver el historial de pedidos, consultar favoritos y cambiar la contraseña.
-- **Diseño Responsivo**:
-  - La interfaz está completamente optimizada para una experiencia perfecta en dispositivos móviles, tabletas y ordenadores de escritorio.
+El proyecto se ha construido con tecnologías modernas y eficientes:
+
+- ⚛️ **Framework Principal**: [Next.js 15](https://nextjs.org/) + **React 18**
+  - Uso del **App Router** para SSR/CSR optimizado.
+- 🟦 **Lenguaje**: **TypeScript** (código robusto, tipado y mantenible).
+- 🎨 **Estilos**: [Tailwind CSS](https://tailwindcss.com/) (utility-first).
+- 🧩 **UI Components**: [ShadCN UI](https://ui.shadcn.com/) (basado en Radix UI + Tailwind).
+- 🗂️ **Gestión de Estado**: [Zustand](https://zustand-demo.pmnd.rs/) (carrito de compras).
+- 🤖 **Inteligencia Artificial**: [Genkit (Google)](https://github.com/google/genkit) (para futuras integraciones de IA).
+- 📋 **Formularios**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) (validación robusta).
 
 ---
 
-## 4. Estructura de Archivos y Directorios
+## 🚀 3. Funcionalidades Clave
 
-A continuación se describe la organización del código fuente (`src/`) y otros archivos importantes.
+### 🛒 Catálogo de Productos
+- Listado completo con **filtros y ordenación**.  
+- Páginas de colecciones (ej. *Novedades*, *Colección de Verano*).  
+- Detalle del producto con:
+  - Carrusel de imágenes.  
+  - Descripción + especificaciones.  
+  - ⭐ Reseñas de clientes.  
 
-### `src/app/`
-El corazón de la aplicación, donde reside el enrutamiento y las páginas principales, siguiendo la convención del App Router de Next.js.
+### 🏠 Página de Inicio Dinámica
+- Carrusel de **banners principales**.  
+- 🔥 **Oferta del Día** con cronómetro de cuenta regresiva.  
+- Carrusel de productos destacados.  
 
-- **`layout.tsx`**: El layout principal de la aplicación. Envuelve a todas las páginas y contiene el `Header`, `Footer` y el `Toaster` para notificaciones. Aquí se definen los metadatos globales y las fuentes.
-- **`globals.css`**: Archivo de estilos globales donde se configuran las directivas de Tailwind CSS y las variables de color del tema (CSS variables HSL) para `shadcn/ui`.
-- **`page.tsx`**: La página de inicio (`/`). Contiene el carrusel principal, la oferta del día y las secciones de colecciones.
+### 🛍️ Carrito de Compras
+- Persistente con `localStorage`.  
+- Panel lateral tipo **Sheet**.  
+- Añadir, eliminar y actualizar cantidades.  
 
-#### Subdirectorios en `src/app/`
+### 💳 Checkout
+- Flujo en varios pasos: **Información → Envío → Pago**.  
 
-- **`products/`**:
-  - **`page.tsx`**: Página que muestra todos los productos (`/products`) con filtros y ordenación.
-  - **`[id]/page.tsx`**: Página de detalle de un producto específico, accesible a través de una ruta dinámica como `/products/1`.
-- **`collections/[slug]/`**:
-  - **`page.tsx`**: Página para una colección específica (ej. `/collections/new-arrivals`), que filtra los productos por categoría.
-- **`checkout/`**:
-  - **`page.tsx`**: La página de proceso de pago (`/checkout`).
-- **`account/`**:
-  - **`layout.tsx`**: Un layout específico para las páginas de la cuenta de usuario, que incluye el menú de navegación lateral.
-  - **`page.tsx`**: Página principal del perfil del usuario (`/account`).
-  - **`favorites/page.tsx`**: Página para mostrar los productos favoritos.
-  - **`orders/page.tsx`**: Página con el historial de pedidos.
-  - **`orders/[id]/page.tsx`**: Página con los detalles de un pedido específico.
-  - **`security/page.tsx`**: Página para cambiar la contraseña.
+### 👤 Cuenta de Usuario
+- Panel con **barra lateral de navegación**.  
+- Secciones: Perfil, Favoritos, Historial de pedidos, Seguridad.  
 
-### `src/components/`
-Contiene todos los componentes de React reutilizables de la aplicación.
+### 📱 Responsividad
+- Totalmente optimizado para **móvil, tablet y escritorio**.  
 
-- **`ui/`**: Alberga los componentes de `shadcn/ui` (Button, Card, Input, etc.). Estos son los bloques de construcción fundamentales de la interfaz.
-- **`layout/`**: Componentes estructurales de la página.
-  - **`header.tsx`**: El encabezado de la aplicación, con el logo, la navegación y los iconos de cuenta y carrito.
-  - **`footer.tsx`**: El pie de página con enlaces útiles y el formulario de suscripción.
-- **`product-card.tsx`**: El componente de tarjeta que se usa para mostrar un producto en las listas.
-- **`cart-sheet.tsx`**: El panel lateral que muestra el contenido del carrito de compras.
-- **`star-rating.tsx`**: Componente para mostrar la calificación de productos con estrellas.
-- **`countdown-timer.tsx`**: El cronómetro reutilizable para las ofertas.
-- **`icons.tsx`**: Donde se define el componente del logo "Zafar".
+---
 
-### `src/hooks/`
-Contiene los "custom hooks" de React para encapsular lógica y estado.
+## 📂 4. Estructura de Archivos y Directorios
 
-- **`use-cart.ts`**: Hook de Zustand que gestiona todo el estado y las acciones del carrito de compras.
-- **`use-toast.ts`**: Hook para mostrar notificaciones (toasts) en la aplicación.
-- **`use-debounce.ts`**: Hook útil para retrasar la ejecución de una función, usado en los filtros de productos.
-- **`use-mobile.tsx`**: Hook para detectar si el usuario está en un dispositivo móvil.
+### `src/app/`  
+El corazón de la app: páginas + enrutamiento con App Router.  
 
-### `src/lib/`
-Archivos de utilidad y lógica auxiliar.
+- `layout.tsx` → Layout global (Header, Footer, Toaster).  
+- `globals.css` → Estilos globales (Tailwind + variables CSS).  
+- `page.tsx` → Home con carrusel, oferta y colecciones.  
 
-- **`utils.ts`**: Contiene la función `cn`, una utilidad para combinar clases de Tailwind CSS de forma condicional.
-- **`placeholder-data.ts`**: Archivo que contiene datos de ejemplo (productos, pedidos, reseñas) que simulan una base de datos. Ideal para el desarrollo y prototipado.
+#### Subdirectorios principales
+- **`products/`**
+  - `page.tsx` → Catálogo `/products`.  
+  - `[id]/page.tsx` → Detalle de producto `/products/1`.  
 
-### `src/ai/`
-Directorio destinado a la integración con **Genkit**.
-- **`genkit.ts`**: Configuración inicial del cliente de Genkit.
-- **`dev.ts`**: Archivo para importar y ejecutar los flujos de Genkit en el entorno de desarrollo.
-- **`flows/`** (no creado aún): Este sería el lugar para definir los flujos de IA, como un recomendador de productos o un generador de descripciones.
+- **`collections/[slug]/page.tsx`** → Colecciones específicas.  
 
-### `src/types/`
-- **`index.ts`**: Define las interfaces de TypeScript para las principales entidades de datos de la aplicación, como `Product`, `Order`, `Review`, y `CartItem`.
+- **`checkout/page.tsx`** → Proceso de compra.  
 
-### Archivos Raíz
+- **`account/`**
+  - `layout.tsx` → Layout con navegación lateral.  
+  - `page.tsx` → Perfil del usuario.  
+  - `favorites/page.tsx` → Favoritos.  
+  - `orders/page.tsx` → Historial de pedidos.  
+  - `orders/[id]/page.tsx` → Detalle de pedido.  
+  - `security/page.tsx` → Seguridad (cambiar contraseña).  
 
-- **`tailwind.config.ts`**: Archivo de configuración de Tailwind CSS. Aquí se personalizan los colores, fuentes y animaciones del tema.
-- **`next.config.ts`**: Configuración de Next.js, donde se pueden definir reglas para imágenes, redirecciones, etc.
-- **`package.json`**: Define los scripts del proyecto (como `dev`, `build`) y lista todas las dependencias (librerías externas).
-- **`components.json`**: Fichero de configuración de `shadcn/ui`.
-- **`tsconfig.json`**: Configuración del compilador de TypeScript.
+---
+
+### `src/components/`  
+Componentes **reutilizables** de la interfaz.  
+
+- `ui/` → Componentes de ShadCN UI (Button, Card, Input).  
+- `layout/` → Estructura:
+  - `header.tsx` → Navegación + logo + carrito + cuenta.  
+  - `footer.tsx` → Enlaces y suscripción.  
+- `product-card.tsx` → Tarjeta de producto.  
+- `cart-sheet.tsx` → Panel lateral del carrito.  
+- `star-rating.tsx` → ⭐ Calificaciones.  
+- `countdown-timer.tsx` → Cronómetro de ofertas.  
+- `icons.tsx` → Logo **Zafar**.  
+
+---
+
+### `src/hooks/`  
+Custom hooks para lógica de estado.  
+
+- `use-cart.ts` → Estado del carrito (Zustand).  
+- `use-toast.ts` → Notificaciones.  
+- `use-debounce.ts` → Filtros optimizados.  
+- `use-mobile.tsx` → Detección de móvil.  
+
+---
+
+### `src/lib/`  
+Funciones de utilidad.  
+
+- `utils.ts` → `cn` (clases condicionales Tailwind).  
+- `placeholder-data.ts` → Datos fake (productos, pedidos, reseñas).  
+
+---
+
+### `src/ai/`  
+Integración con **Genkit**.  
+
+- `genkit.ts` → Configuración inicial.  
+- `dev.ts` → Flujos de prueba en desarrollo.  
+- `flows/` (futuro) → Flujos de IA (recomendador, generador de descripciones).  
+
+---
+
+### `src/types/`  
+- `index.ts` → Interfaces **TypeScript**:  
+  - `Product`, `Order`, `Review`, `CartItem`.  
+
+---
+
+### Archivos raíz
+- `tailwind.config.ts` → Configuración de Tailwind.  
+- `next.config.ts` → Configuración de Next.js.  
+- `package.json` → Dependencias y scripts.  
+- `components.json` → Configuración de ShadCN UI.  
+- `tsconfig.json` → Configuración de TypeScript.  
+
+---
+
+## ✅ Conclusión
+
+**Zafar** es un e-commerce moderno, escalable y preparado para integrar **IA** en el futuro.  
+La arquitectura modular, el uso de **Next.js 15** y la integración de herramientas como **Zustand** y **ShadCN UI** hacen que sea un proyecto sólido y fácil de mantener.  
