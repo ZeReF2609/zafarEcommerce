@@ -2,7 +2,7 @@
 "use client";
 
 import Link from 'next/link';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { products } from '@/lib/placeholder-data';
 import { Button } from '@/components/ui/button';
@@ -42,10 +42,15 @@ const heroSlides = [
 ]
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState(false);
   const newArrivals = products.filter(p => p.collection === 'new-arrivals').slice(0, 5);
   const summerCollection = products.filter(p => p.collection === 'summer-collection').slice(0, 5);
   const featuredProducts = [...products].sort((a, b) => b.rating - a.rating).slice(0, 8);
   const dealOfTheDay = products.find(p => p.originalPrice);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   const plugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
@@ -128,7 +133,7 @@ export default function Home() {
                                     <span className="text-xl text-muted-foreground line-through">${dealOfTheDay.originalPrice?.toFixed(2)}</span>
                                 )}
                             </div>
-                            <CountdownTimer targetDate={offerEndDate} />
+                            {isMounted && <CountdownTimer targetDate={offerEndDate} />}
                             <Button asChild size="lg" className="mt-6 w-full sm:w-auto">
                                 <Link href={`/products/${dealOfTheDay.id}`}>Comprar Ahora</Link>
                             </Button>
