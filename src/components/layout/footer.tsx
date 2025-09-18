@@ -53,7 +53,7 @@ export function Footer() {
         </div>
         <div className="mt-12 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between">
            <p className="text-sm text-white/60 text-center md:text-left">
-              &copy; {new Date().getFullYear()} Pionier. Todos los Derechos Reservados.
+              &copy; {new Date().getFullYear()} Zafar. Todos los Derechos Reservados.
             </p>
             <div className="mt-4 md:mt-0">
                 <form className='flex w-full max-w-sm items-center space-x-2'>

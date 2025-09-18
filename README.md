@@ -1,8 +1,8 @@
-# Documentación del Proyecto: E-commerce "Pionier"
+# Documentación del Proyecto: E-commerce "Zafar"
 
 ## 1. Introducción
 
-Este documento detalla la arquitectura, tecnologías y funcionalidades del proyecto de e-commerce "Pionier". El objetivo es proporcionar una guía clara para desarrolladores y cualquier persona interesada en entender cómo está construida la aplicación.
+Este documento detalla la arquitectura, tecnologías y funcionalidades del proyecto de e-commerce "Zafar". El objetivo es proporcionar una guía clara para desarrolladores y cualquier persona interesada en entender cómo está construida la aplicación.
 
 La tienda está diseñada para ser una plataforma de venta de ropa y accesorios moderna, rápida y completamente adaptable a cualquier dispositivo.
 
@@ -84,7 +84,7 @@ Contiene todos los componentes de React reutilizables de la aplicación.
 - **`cart-sheet.tsx`**: El panel lateral que muestra el contenido del carrito de compras.
 - **`star-rating.tsx`**: Componente para mostrar la calificación de productos con estrellas.
 - **`countdown-timer.tsx`**: El cronómetro reutilizable para las ofertas.
-- **`icons.tsx`**: Donde se define el componente del logo "Pionier".
+- **`icons.tsx`**: Donde se define el componente del logo "Zafar".
 
 ### `src/hooks/`
 Contiene los "custom hooks" de React para encapsular lógica y estado.
